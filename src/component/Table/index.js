@@ -7,7 +7,7 @@ const Table = ({ city, state }) => {
 
     const getFlag = async (file_type, country_code) => {
         const response = await axios.get(`https://www.countryflags.io/${file_type}/${country_code}`)
-      
+
     }
 
     return (
@@ -40,9 +40,9 @@ const Table = ({ city, state }) => {
                         </tr>
 
                     )
-                }) : <div className="text"> No data found</div>  : <div className="text">
-                   Start searching
-                </div>}
+                }) : <div className="text"> No data found</div> : <div className="text">
+                Start searching
+            </div>}
 
 
         </table>

@@ -15,7 +15,9 @@ function App() {
   
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-  
+    const newData =  city.slice(5*(pageNumber-1)+1,5*(pageNumber-1)+7)
+    setCurrent(newData)
+    
   };
   const collectData = (data) => {
    
@@ -30,6 +32,8 @@ function App() {
     };
 
     axios.request(options).then(function (response) {
+      const limitdata = response.data.data.slice(0,5)
+  setCurrent(limitdata)
       setCity(response.data.data)
     }).catch(function (error) {
 
@@ -50,7 +54,7 @@ if(Number(e.target.value) > 10){
   return (
   <>
   <Search collectData={collectData} state={state} setState={setState}/>
-  <Table city={city} state={state}  />
+  <Table city={current} state={state}  />
   {city.length?<Pagination
         currentPage={currentPage}
         totalPages={Math.ceil(city?.length/5)}
